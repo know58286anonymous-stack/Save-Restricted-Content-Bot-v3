@@ -2,6 +2,21 @@
 # Licensed under the GNU General Public License v3.0.  
 # See LICENSE file in the repository root for full license text.
 
+from pyrogram import utils
+
+def get_peer_type_new(peer_id: int) -> str:
+    peer_id_str = str(peer_id)
+    if not peer_id_str.startswith("-"):
+        return "user"
+    elif peer_id_str.startswith("-100"):
+        return "channel"
+    else:
+        return "chat"
+
+utils.get_peer_type = get_peer_type_new
+
+
+
 import asyncio
 from shared_client import start_client
 import importlib
@@ -39,3 +54,4 @@ if __name__ == "__main__":
             loop.close()
         except Exception:
             pass
+
