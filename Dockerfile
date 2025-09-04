@@ -4,6 +4,7 @@ RUN apt-get install git curl python3-pip ffmpeg -y
 RUN apt-get -y install git
 RUN apt-get update && apt-get install -y wget python3-pip curl bash ffmpeg
 WORKDIR /app
+
 COPY requirements.txt .
 
 RUN pip3 install wheel
